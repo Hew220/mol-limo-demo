@@ -1,47 +1,25 @@
 package limo.example.mollimodemo.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+@Data
+@Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Car {
-
-    private  CarType carType;
-    private  GearType gearType;
-    private  Status status;
-
-    public Car(CarType carType, GearType gearType, Status status) {
-        this.carType = carType;
-        this.gearType = gearType;
-        this.status = status;
-    }
-
-    public CarType getCarType() {
-        return carType;
-    }
-
-    public void setCarType(CarType carType) {
-        this.carType = carType;
-    }
-
-    public GearType getGearType() {
-        return gearType;
-    }
-
-    public void setGearType(GearType gearType) {
-        this.gearType = gearType;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-    @Override
-    public String toString() {
-        return "Car{" +
-                "carType=" + carType +
-                ", gearType=" + gearType +
-                ", status=" + status +
-                '}';
-    }
+    @Id
+    @GeneratedValue
+    private Long id;
+    @Enumerated(EnumType.STRING)
+    private CarType carType;
+    @Enumerated(EnumType.STRING)
+    private GearType gearType;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 }
